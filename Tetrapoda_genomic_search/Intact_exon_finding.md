@@ -58,7 +58,7 @@ done < <(ls -1 ./getorf_out/${clade}/*.fa)
 
 ## Extract Lyosin's exon L from ORFs
 ```
-# ORFs are translated and merged to single multi amino acid fasta file for alignment
+# ORFs are translated and merged to a single multi-fasta file for alignment
 mkdir -p ./merged_fasta/${clade}
 cat ./rename_fasta/${clade}/*.fa > ./merged_fasta/${clade}/merged_fasta.fa
 seqkit translate ./merged_fasta/${clade}/merged_fasta.fa > ./merged_fasta/${clade}/merged_fasta_aa.fa
@@ -78,7 +78,7 @@ mafft --reorder ./merged_fasta/${clade}/merged_fasta_aa.aln > ./merged_fasta/${c
 # Get sequence names of Lyosin proteins
 seqkit seq -n ./merged_fasta/${clade}/merged_fasta_aa_2.aln > ./merged_fasta/${clade}/merged_fasta_aa_2.txt
 
-# Get Lyosin nucleotide coding sequences (CDS)
+# Get Lyosin coding sequences (CDS) as nucleotide acids
 seqkit grep -f ./merged_fasta/${clade}/merged_fasta_aa_2.txt ./merged_fasta/${clade}/merged_fasta.fa > ./merged_fasta/${clade}/Lyosin_cds.fa
 
 # Align the coding sequences
@@ -88,7 +88,7 @@ linsi --reorder ./merged_fasta/${clade}/Lyosin_cds.fa > ./merged_fasta/${clade}/
 Note: After the alignment, sequences sharing 5'-splice site with alligator Lyosin are retrieved.
 
 
-## Final alignment of intact exon L was generated
+## Final alignment of intact exon L (codon alignment)
 ```
 # Remove "-" from alignment for translate
 sed -e "s/-//g" ./merged_fasta/${clade}/Lyosin_cds_exon.aln > ./merged_fasta/${clade}/Lyosin_cds_exon.fa
@@ -99,7 +99,7 @@ seqkit translate ./merged_fasta/${clade}/Lyosin_cds_exon.fa > ./merged_fasta/${c
 # Amino acid alignment
 linsi --reorder ./merged_fasta/${clade}/Lyosin_cds_exon_aa.fa > ./merged_fasta/${clade}/Lyosin_cds_exon_aa.aln
 
-# Make codon alignment of Lyosin exon1
+# Make codon alignment of Lyosin's exon L
 pal2nal.pl \
 ./merged_fasta/${clade}/Lyosin_cds_exon_aa.aln \
 ./merged_fasta/${clade}/Lyosin_cds_exon.fa \
