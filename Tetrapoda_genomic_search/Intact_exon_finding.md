@@ -85,7 +85,7 @@ seqkit grep -f ./merged_fasta/${clade}/merged_fasta_aa_2.txt ./merged_fasta/${cl
 linsi --reorder ./merged_fasta/${clade}/Lyosin_cds.fa > ./merged_fasta/${clade}/Lyosin_cds.aln
 ```
 
-Note: After the alignment, sequences sharing 5'-splice site with alligator Lyosin are retrieved.
+Note: After the alignment, sequences sharing 5'-splice site are retrieved.
 
 
 ## Final alignment of intact exon L (codon alignment)
