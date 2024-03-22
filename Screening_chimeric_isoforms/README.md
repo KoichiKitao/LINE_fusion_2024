@@ -4,5 +4,5 @@
 Three python scripts  
 "RefSeq_LINE_chimera.py"   
 "RefSeq_table.py"  
-"blast_tabl_v2.py"  
+"blast_table_v2.py"  
 were used in the shell script.
