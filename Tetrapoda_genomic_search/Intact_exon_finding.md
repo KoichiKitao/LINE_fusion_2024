@@ -1,8 +1,10 @@
 # Workflow
 
 ## Input of examples
+``
 clade=Crocodile
 naf_dir="path/to/genome_naf_directory"
+``
 
 ## Make bed file of flanking sequences (uqstream and downstream) fron blat result tables
 
