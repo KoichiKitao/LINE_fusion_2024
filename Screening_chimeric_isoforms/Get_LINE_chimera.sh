@@ -44,7 +44,7 @@ mmseqs convertalis --format-output "query,target,evalue,qlen,qstart,qend,tlen,ts
 awk -F'\t' '$11 >= 0.5' ./MMseqs_out/${name}_RefSeq_LINE.out > ./MMseqs_out/${name}_RefSeq_LINE_0.5.out
 
 # convert MMseq_out to simple tsv file of ID and target for further analysis
-python3 ~/dozen/script/script_220420/codes/blast_table_v2.py \
+python3 blast_table_v2.py \
 ./MMseqs_out/${name}_RefSeq_LINE_0.5.out \
 ./MMseqs_out/${name}_RefSeq_LINE_0.5_simple.tsv
 
