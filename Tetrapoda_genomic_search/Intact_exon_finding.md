@@ -17,7 +17,7 @@ python3 blat_get_flank.py \
 ./bed/${clade}/${sample_name}.bed
 done < <(ls -1 ${naf_dir}/${clade}/*.naf)
 ```
-## Get fasta files using bed files above and extract ORFs
+## Get fasta files using bed files generated above and extract ORFs
 
 ```
 mkdir -p out_fasta/${clade}
@@ -56,7 +56,7 @@ $sp_name
 done < <(ls -1 ./getorf_out/${clade}/*.fa)
 ```
 
-## Extract Lyosin exon X1 from ORFs
+## Extract Lyosin's exon L from ORFs
 ```
 # ORFs are translated and merged to single multi amino acid fasta file for alignment
 mkdir -p ./merged_fasta/${clade}
@@ -67,10 +67,10 @@ seqkit translate ./merged_fasta/${clade}/merged_fasta.fa > ./merged_fasta/${clad
 mafft --reorder ./merged_fasta/${clade}/merged_fasta_aa.fa > ./merged_fasta/${clade}/merged_fasta_aa_pre.aln
 ```
 
-Note: After the alignment, sequences aligned to previously identified Lyosin are retrieved manually.
+Note: After the alignment, sequences aligned to previously identified Lyosin sequences are retrieved manually.
 
 
-## Nucleotide sequence investigation to investigate intactness of exon X1
+## Investigate intactness of exon X1
 ```
 # Re-alingment of Lyosin proteins
 mafft --reorder ./merged_fasta/${clade}/merged_fasta_aa.aln > ./merged_fasta/${clade}/merged_fasta_aa_2.aln
@@ -85,10 +85,10 @@ seqkit grep -f ./merged_fasta/${clade}/merged_fasta_aa_2.txt ./merged_fasta/${cl
 linsi --reorder ./merged_fasta/${clade}/Lyosin_cds.fa > ./merged_fasta/${clade}/Lyosin_cds.aln
 ```
 
-Note: After the alignment, sequences sharing 5-splice site with alligator Lyosin are retrieved.
+Note: After the alignment, sequences sharing 5'-splice site with alligator Lyosin are retrieved.
 
 
-## Final alignment of intact exonX1 was generated
+## Final alignment of intact exon L was generated
 ```
 # Remove "-" from alignment for translate
 sed -e "s/-//g" ./merged_fasta/${clade}/Lyosin_cds_exon.aln > ./merged_fasta/${clade}/Lyosin_cds_exon.fa
