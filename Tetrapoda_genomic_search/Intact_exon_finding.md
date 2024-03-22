@@ -1,4 +1,4 @@
-# Workflow
+# Workflow after blat search
 
 ## Input of examples
 ```
@@ -6,8 +6,9 @@ clade=Crocodile
 naf_dir="path/to/genome_naf_directory"
 ```
 
-## Make bed file of flanking sequences (uqstream and downstream) fron blat result tables
+## Make bed file with flanking sequences
 ```
+#  Make bed file with flanking seqnences (upstream and downstream) from blat result tables
 mkdir -p bed/${clade}
 
 sample_name=`basename "${naf_path}" | sed -e "s/\.naf//" | sed -e "s/\s/_/g"`
