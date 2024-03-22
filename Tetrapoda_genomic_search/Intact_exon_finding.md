@@ -1,6 +1,6 @@
-#!/bin/bash
+# Workflow
 
-# values to set
+## Input of examples
 clade=Crocodile
 naf_dir="path/to/genome_naf_directory"
 
@@ -27,7 +27,7 @@ bed=./bed/${clade}/${sample_name}.bed
 out_fasta=./out_fasta/${clade}/${sample_name}.fa
 orf=./getorf_out/${clade}/${sample_name}.fa
 
-# getfasta
+# Get fasta files getfasta
 bedtools getfasta -s -fi ${fasta} -bed ${bed} -fo ${out_fasta}
     
 # getorf
